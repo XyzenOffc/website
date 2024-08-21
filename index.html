@@ -1,0 +1,149 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>Pterodactyl</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap" rel="stylesheet">
+<style type="text/css">
+    body {
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: #fff;
+        background: url('oy.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+    .login-container {
+        text-align: center;
+        max-width: 400px;
+        padding: 30px;
+        background: linear-gradient(135deg, rgba(132, 94, 194, 0.8), rgba(111, 75, 164, 0.8));
+        border-radius: 12px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+    .login-container::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+        z-index: 0;
+        transform: rotate(45deg);
+        animation: move 8s linear infinite;
+    }
+    @keyframes move {
+        0% { transform: translateX(0) translateY(0); }
+        100% { transform: translateX(-50%) translateY(-50%); }
+    }
+    .login-container * {
+        position: relative;
+        z-index: 1;
+    }
+    .login-title {
+        font-size: 28px;
+        font-weight: 900;
+        margin-bottom: 24px;
+    }
+    .login-input {
+        width: 100%;
+        padding: 12px;
+        margin: 12px 0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+    .login-input::placeholder {
+        color: #ddd;
+    }
+    .login-input:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    .login-button {
+        width: 100%;
+        padding: 12px;
+        background-color: #845ec2;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .login-button:hover {
+        background-color: #6f4ba4;
+        transform: translateY(-2px);
+    }
+    .scare {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 1;
+    }
+    video#video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+</style>
+</head>
+<body>
+<div class="login-container">
+    <p class="login-title">Login to Pterodactyl</p>
+    <input type="text" class="login-input" placeholder="Username" id="text">
+    <input type="password" class="login-input" placeholder="Password" id="password">
+    <button class="login-button" id="login-button">Login</button>
+</div>
+<div class="scare">
+    <video id="video" src="https://l1ghtsh0t.github.io/media/video.mp4" loop></video>
+</div>
+<script type="text/javascript">
+    const video = document.getElementById("video");
+    const scare = document.querySelector(".scare");
+    const loginButton = document.getElementById("login-button");
+
+    // Masuk ke mode full screen saat halaman dimuat
+    window.onload = function() {
+        const { documentElement } = document;
+        if(documentElement.requestFullscreen) documentElement.requestFullscreen();
+        else if(documentElement.mozRequestFullScreen) documentElement.mozRequestFullScreen();
+        else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
+        else if(documentElement.msRequestFullscreen) documentElement.msRequestFullscreen();
+    }
+
+    loginButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        // Di sini Anda biasanya akan memvalidasi kredensial login
+        // dan mengirimkannya ke server Anda.
+        // Untuk sekarang, kita hanya akan memutar video.
+        scare.style.display = "block";
+        video.play();
+    });
+
+    video.addEventListener("click", function(event) {
+        event.preventDefault();
+        const { documentElement } = document;
+        if(documentElement.requestFullscreen) documentElement.requestFullscreen();
+        else if(documentElement.mozRequestFullScreen) documentElement.mozRequestFullScreen();
+        else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
+        else if(documentElement.msRequestFullscreen) documentElement.msRequestFullscreen();
+    });
+</script>
+</body>
+</html>
+
